@@ -2,4 +2,3 @@ Dockerfile
 docker-compose.yaml
 app.py
 jenkinsfile1
-requirements.txt
