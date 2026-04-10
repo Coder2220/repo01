@@ -1,1 +1,14 @@
-this is jenkins file
+pipeline {
+    agent { label 'docker' }
+    
+    stages {
+        stage('Check the docker cli') {
+            steps {
+            sh "docker --version"
+            sh "docker ps -a"
+            sh "docker-compose --version"
+            }
+        }
+    }
+
+}
