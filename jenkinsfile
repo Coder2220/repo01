@@ -1,6 +1,5 @@
 pipeline {
-    agent { label 'docker' }
-    
+    agent { label 'Docker' }
     stages {
         stage('Check the docker cli') {
             steps {
@@ -9,31 +8,31 @@ pipeline {
             sh "docker-compose --version"
             }
         }
-         stage('Docker-Build') {
+        stage('Docker-Build') {
             steps {
                 echo "Docker Build Step here..."
-                sh "docker build . -t "
+                sh "docker build . -t pythonapp:v1"
             }
         }
-         stage('DockerContainer Creation') {
+        stage('DockerContainer Creation') {
             steps {
                 echo "Running Docker Compose here..."
                 sh "docker-compose up -d"
             }
         }
-
+ 
         stage('Cheking output') {
             steps {
                 sh "docker ps"
 		        sh "docker-compose ps"
             }
         }
-
+ 
         stage('app working') {
             steps {
                sh "curl localhost:9010"
             }
+        }
     }
-
-
+ 
 }
